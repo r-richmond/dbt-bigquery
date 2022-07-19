@@ -46,7 +46,9 @@
         )
       {%- endset -%}
 
+      {{ config.set('include_sql_header', true) }}
       {{ get_insert_overwrite_merge_sql(target_relation, source_sql, dest_columns, [predicate]) }}
+      {{ config.set('include_sql_header', false) }}
 
   {% else %} {# dynamic #}
 
